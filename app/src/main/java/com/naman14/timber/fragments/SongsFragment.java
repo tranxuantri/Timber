@@ -26,6 +26,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.naman14.timber.R;
 import com.naman14.timber.activities.BaseActivity;
@@ -45,6 +46,7 @@ public class SongsFragment extends Fragment implements MusicStateListener {
 
     private SongsListAdapter mAdapter;
     private BaseRecyclerView recyclerView;
+    private ProgressBar mProgressBar;
     private PreferencesUtility mPreferences;
 
     @Override
@@ -58,9 +60,10 @@ public class SongsFragment extends Fragment implements MusicStateListener {
         View rootView = inflater.inflate(
                 R.layout.fragment_recyclerview, container, false);
 
+        mProgressBar = rootView.findViewById(R.id.loading_animation);
         recyclerView = rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setEmptyView(getActivity(), rootView.findViewById(R.id.list_empty), "No media found");
+        recyclerView.setEmptyView(getActivity(), rootView.findViewById(R.id.list_empty), "No songs found");
         FastScroller fastScroller =  rootView.findViewById(R.id.fastscroller);
         fastScroller.setRecyclerView(recyclerView);
 
@@ -146,8 +149,10 @@ public class SongsFragment extends Fragment implements MusicStateListener {
 
         @Override
         protected String doInBackground(String... params) {
-            if (getActivity() != null)
+            mProgressBar.setVisibility(View.VISIBLE);
+            if (getActivity() != null) {
                 mAdapter = new SongsListAdapter((AppCompatActivity) getActivity(), SongLoader.getAllSongs(getActivity()), false, false);
+            }
             return "Executed";
         }
 
@@ -156,7 +161,7 @@ public class SongsFragment extends Fragment implements MusicStateListener {
             recyclerView.setAdapter(mAdapter);
             if (getActivity() != null)
                 recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL_LIST));
-
+            mProgressBar.setVisibility(View.GONE);
         }
 
         @Override

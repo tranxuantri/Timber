@@ -167,4 +167,5 @@
     <string name="now_playing_no_track_selected">\"No current track selected.</string>
     <string name="lyrics_loading">Loading...</string>
 
+    <string name="img_dsc">img_dsc</string>
 </resources>

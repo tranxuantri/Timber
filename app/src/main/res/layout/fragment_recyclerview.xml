@@ -25,4 +25,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/recyclerview" />
 
+    <ProgressBar
+        android:id="@+id/loading_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:theme="@style/ProgressBar"
+        android:visibility="gone" />
+
 </RelativeLayout>

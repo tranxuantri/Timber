@@ -63,7 +63,7 @@ public class ArtistFragment extends Fragment {
         recyclerView =  rootView.findViewById(R.id.recyclerview);
         FastScroller fastScroller = rootView.findViewById(R.id.fastscroller);
         fastScroller.setRecyclerView(recyclerView);
-        recyclerView.setEmptyView(getActivity(), rootView.findViewById(R.id.list_empty), "No media found");
+        recyclerView.setEmptyView(getActivity(), rootView.findViewById(R.id.list_empty), "No artist found");
 
         setLayoutManager();
 

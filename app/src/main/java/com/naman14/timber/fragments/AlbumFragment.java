@@ -64,7 +64,7 @@ public class AlbumFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.recyclerview);
         fastScroller = rootView.findViewById(R.id.fastscroller);
 
-        recyclerView.setEmptyView(getActivity(), rootView.findViewById(R.id.list_empty), "No media found");
+        recyclerView.setEmptyView(getActivity(), rootView.findViewById(R.id.list_empty), "No album found");
 
         setLayoutManager();
 
